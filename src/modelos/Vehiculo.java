@@ -1,12 +1,15 @@
 package modelos;
 
 import control.VehiculoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  * @author
  * @version 1.0
  */
-public class Vehiculo {
+public class Vehiculo implements Runnable {
     
     private String llantas;
     private int motor;
@@ -17,13 +20,6 @@ public class Vehiculo {
     private boolean patina;
     private boolean accidentado;
 
-    public boolean getPatina(){
-        return this.patina;
-    }
-
-    public boolean getAccidentado(){
-        return this.accidentado;
-    }
     public Vehiculo(String llantas, int motor){
 
         this.llantas = llantas;
@@ -35,6 +31,14 @@ public class Vehiculo {
         this.accidentado = false;
     }
 
+        public boolean getPatina(){
+        return this.patina;
+    }
+
+    public boolean getAccidentado(){
+        return this.accidentado;
+    }
+    
     public void encender() throws VehiculoException {
         if (this.estado == 0){
             this.estado = 1;
@@ -115,5 +119,19 @@ public class Vehiculo {
                 velocidadAsignar = 220;
         }
         return velocidadAsignar;
+    }
+
+    @Override
+    public void run() {
+        while(!this.accidentado){
+            try {
+                Thread.sleep(1000);
+                JOptionPane.showMessageDialog(null, "sleep");
+                
+            } catch (InterruptedException ex) {
+                System.out.println("Error" + ex.getMessage());
+            }
+            
+        }
     }
 }

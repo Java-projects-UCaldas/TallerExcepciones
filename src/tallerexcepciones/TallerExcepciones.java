@@ -21,7 +21,7 @@ public class TallerExcepciones {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void mains(String[] args) {
         
         Vehiculo carro = new Vehiculo("buenas", 3000);
         while(!carro.getAccidentado()){
