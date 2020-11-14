@@ -5,6 +5,7 @@
  */
 package gui;
 
+import control.VehiculoException;
 import javax.swing.JFileChooser;
 import java.io.File;     
 import java.io.IOException;
@@ -112,7 +113,12 @@ public class Iventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        try {
+            nuevoVehiculo.encender();
+            System.out.println("vehiculo encendido");
+        } catch (VehiculoException ex) {
+            Logger.getLogger(Iventana.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
