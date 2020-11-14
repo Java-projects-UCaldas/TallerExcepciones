@@ -20,6 +20,11 @@ public class Vehiculo implements Runnable {
     private boolean patina;
     private boolean accidentado;
 
+    
+    public Vehiculo(){
+        
+    }
+    
     public Vehiculo(String llantas, int motor){
 
         this.llantas = llantas;

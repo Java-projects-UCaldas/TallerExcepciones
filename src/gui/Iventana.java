@@ -23,6 +23,8 @@ public class Iventana extends javax.swing.JFrame {
     /**
      * Creates new form Iventana
      */
+    
+    Vehiculo nuevoVehiculo = new Vehiculo();
     public Iventana() {
         initComponents();
     }
@@ -38,6 +40,7 @@ public class Iventana extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +50,13 @@ public class Iventana extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Encender");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -61,8 +71,10 @@ public class Iventana extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jButton1)))
-                .addContainerGap(190, Short.MAX_VALUE))
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -70,7 +82,9 @@ public class Iventana extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
@@ -85,7 +99,7 @@ public class Iventana extends javax.swing.JFrame {
             File selectedFile = fileChooser.getSelectedFile();
             Lector nuevoLector = new Lector(selectedFile.getAbsolutePath());
             try  {
-                Vehiculo nuevoVehiculo = nuevoLector.CreaVehículo();
+                nuevoVehiculo = nuevoLector.CreaVehículo();
                 System.out.println(nuevoVehiculo.getAccidentado());
             } catch (IOException ex) {
                 Logger.getLogger(Iventana.class.getName()).log(Level.SEVERE, null, ex);
@@ -96,6 +110,10 @@ public class Iventana extends javax.swing.JFrame {
         //Thread h1 = new Thread(carro);
         //h1.start();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,6 +152,7 @@ public class Iventana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

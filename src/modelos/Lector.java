@@ -23,9 +23,8 @@ public class Lector {
     }
 
     /**
-     * Método que cuenta palabras en una serie de archivos
-     * @return  Un diccionario con el nombre de los archivos y 
-     *          las veces que aparece la palabra
+     * Método que devuevle un Vehiculo
+     * @return  Un objeto de la clase Vehiculo
      * @throws IOException
      */
     public Vehiculo CreaVehículo() throws IOException{
