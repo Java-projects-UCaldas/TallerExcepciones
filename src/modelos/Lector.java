@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import javax.swing.JLabel;
 
 /**
  * Clase que lee los archivos de una carpeta y cuenta las veces que se
@@ -50,6 +51,7 @@ public class Lector {
                 else{
                     datos.add("El archivo no es del tipo txt");
                 }
+            
         Vehiculo nuevoVehiculo = new Vehiculo(datos.get(1), Integer.parseInt(datos.get(3)));
        return nuevoVehiculo;
     }

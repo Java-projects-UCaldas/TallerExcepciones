@@ -23,7 +23,7 @@ public class TallerExcepciones {
      */
     public static void mains(String[] args) {
         
-        Vehiculo carro = new Vehiculo("buenas", 3000);
+        /*Vehiculo carro = new Vehiculo("buenas", 3000);
         while(!carro.getAccidentado()){
             try {
                 //carro.apagar();
@@ -34,6 +34,6 @@ public class TallerExcepciones {
             } catch (VehiculoException e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
             }
-        }
+        }*/
     }
 }

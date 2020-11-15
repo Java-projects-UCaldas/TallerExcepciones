@@ -4,6 +4,7 @@ import control.VehiculoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
 
 /**
  * @author
@@ -13,12 +14,16 @@ public class Vehiculo implements Runnable {
     
     private String llantas;
     private int motor;
-    private int estado;
+    private String estado;
     private int velocidadPermitidaLlantas;
     private int velocidadPermitidaMotor;
     private int velocidadActual;
+    private int encendido;
     private boolean patina;
     private boolean accidentado;
+    private JLabel jLabelEstado;
+    private JLabel jLabelMensaje;
+    private boolean bandera;
 
     
     public Vehiculo(){
@@ -29,14 +34,16 @@ public class Vehiculo implements Runnable {
 
         this.llantas = llantas;
         this.motor = motor;
-        this.estado = 0;
+        this.estado = "";
         this.velocidadPermitidaLlantas = asignarVelocidadLlantas(llantas);
         this.velocidadPermitidaMotor = asignarVelocidadMotor(motor);
         this.patina = false;
         this.accidentado = false;
+        this.encendido = 0;
+        
     }
 
-        public boolean getPatina(){
+    public boolean getPatina(){
         return this.patina;
     }
 
@@ -44,9 +51,21 @@ public class Vehiculo implements Runnable {
         return this.accidentado;
     }
     
+    public String getEstado(){
+        return this.estado;
+    }
+    
+    public void setEstado(String estado){
+        this.estado = estado;
+    }
+    public void setJLabelEstado(JLabel estado){
+        this.jLabelEstado = estado;
+    }
+    
     public void encender() throws VehiculoException {
-        if (this.estado == 0){
-            this.estado = 1;
+        if (this.encendido == 0){
+            this.encendido = 1;
+            this.estado = "Encendido";
         }
         else{
             throw new VehiculoException("El vehículo ya se encuentra encendido");
@@ -54,10 +73,10 @@ public class Vehiculo implements Runnable {
     }
 
     public void apagar() throws VehiculoException {
-        if(this.estado == 1){
-            this.estado = 0;
+        if(this.encendido == 1){
+            this.encendido = 0;
         }
-        else if(this.estado == 0){
+        else if(this.encendido == 0){
             throw new VehiculoException("El vehículo ya se encuentra apagado");
         }
         else if(this.velocidadActual > 60){
@@ -128,11 +147,9 @@ public class Vehiculo implements Runnable {
 
     @Override
     public void run() {
-        while(!this.accidentado){
+        while(this.bandera){
             try {
                 Thread.sleep(1000);
-                JOptionPane.showMessageDialog(null, "sleep");
-                
             } catch (InterruptedException ex) {
                 System.out.println("Error" + ex.getMessage());
             }
