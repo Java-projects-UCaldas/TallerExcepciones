@@ -18,24 +18,14 @@ public class Pventana extends javax.swing.JPanel {
 
     Via nuevaVia;
     Nube nube1, nube2, nube3, nube4, nube5, nube6, nube7, nube8;
-    Vehiculo vehiculo = new Vehiculo("Bonitas", 3000);
-    Thread h1;
+    Thread h1, h2, h3, h4, h5, h6, h7, h8;
+    boolean bandera = false;
     /**
      * Creates new form Pventana
      */
     public Pventana() {
         initComponents();
-        this.nuevaVia = new Via(0,0,500,160);
-        this.nube1 = new Nube(10, 10, 40, 30);
-        this.nube2 = new Nube(70, 10, 40, 30);
-        this.nube3 = new Nube(130, 10, 40, 30);
-        this.nube4 = new Nube(190, 10, 40, 30);
-        this.nube5 = new Nube(250, 10, 40, 30);
-        this.nube6 = new Nube(310, 10, 40, 30);
-        this.nube7 = new Nube(370, 10, 40, 30);
-        this.nube8 = new Nube(430, 10, 40, 30);
-        this.h1 = new Thread(this.nube8);
-        this.h1.start();
+        this.nuevaVia = new Via(0,0,500,160);       
     }
 
     /**
@@ -64,39 +54,61 @@ public class Pventana extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-        int x = 5;
-        g.drawImage(this.nuevaVia.getImagen().getImage(), this.nuevaVia.getX(), 
+
+       g.drawImage(this.nuevaVia.getImagen().getImage(), this.nuevaVia.getX(), 
                 this.nuevaVia.getY(), this.nuevaVia.getAncho(), this.nuevaVia.getAlto(), this);
       
-        g.drawImage(this.nube1.getImagen().getImage(), this.nube1.getX(), 
-                this.nube1.getY(), this.nube1.getAncho(), this.nube1.getAlto(), this);
-        g.drawImage(this.nube2.getImagen().getImage(), this.nube2.getX(), 
-                this.nube2.getY(), this.nube2.getAncho(), this.nube2.getAlto(), this);
-        g.drawImage(this.nube3.getImagen().getImage(), this.nube3.getX(), 
-                this.nube3.getY(), this.nube3.getAncho(), this.nube3.getAlto(), this);
-        g.drawImage(this.nube4.getImagen().getImage(), this.nube4.getX(), 
-                this.nube4.getY(), this.nube4.getAncho(), this.nube4.getAlto(), this);
-        g.drawImage(this.nube5.getImagen().getImage(), this.nube5.getX(), 
-                this.nube5.getY(), this.nube5.getAncho(), this.nube5.getAlto(), this);
-        g.drawImage(this.nube6.getImagen().getImage(), this.nube6.getX(), 
-                this.nube6.getY(), this.nube6.getAncho(), this.nube6.getAlto(), this);
-        g.drawImage(this.nube7.getImagen().getImage(), this.nube7.getX(), 
-                this.nube7.getY(), this.nube7.getAncho(), this.nube7.getAlto(), this);
-        g.drawImage(this.nube8.getImagen().getImage(), this.nube8.getX(), 
-                this.nube8.getY(), this.nube8.getAncho(), this.nube8.getAlto(), this);
+       if(bandera){
+            g.drawImage(this.nube1.getImagen().getImage(), this.nube1.getX(), 
+                 this.nube1.getY(), this.nube1.getAncho(), this.nube1.getAlto(), this);
+            g.drawImage(this.nube2.getImagen().getImage(), this.nube2.getX(), 
+                 this.nube2.getY(), this.nube2.getAncho(), this.nube2.getAlto(), this);
+            g.drawImage(this.nube3.getImagen().getImage(), this.nube3.getX(), 
+                    this.nube3.getY(), this.nube3.getAncho(), this.nube3.getAlto(), this);
+            g.drawImage(this.nube4.getImagen().getImage(), this.nube4.getX(), 
+                    this.nube4.getY(), this.nube4.getAncho(), this.nube4.getAlto(), this);
+            g.drawImage(this.nube5.getImagen().getImage(), this.nube5.getX(), 
+                    this.nube5.getY(), this.nube5.getAncho(), this.nube5.getAlto(), this);
+            g.drawImage(this.nube6.getImagen().getImage(), this.nube6.getX(), 
+                    this.nube6.getY(), this.nube6.getAncho(), this.nube6.getAlto(), this);
+            g.drawImage(this.nube7.getImagen().getImage(), this.nube7.getX(), 
+                    this.nube7.getY(), this.nube7.getAncho(), this.nube7.getAlto(), this);
+            g.drawImage(this.nube8.getImagen().getImage(), this.nube8.getX(), 
+                    this.nube8.getY(), this.nube8.getAncho(), this.nube8.getAlto(), this);
+       }
+        
+        
         
         repaint();
     }
-
+    
     public void moverNube(){
-        this.nube1.setX(this.nube1.getY() - 5);
-        this.nube2.setX(this.nube1.getY() - 5);
-        this.nube3.setX(this.nube1.getY() - 5);
-        this.nube4.setX(this.nube1.getY() - 5);
-        this.nube5.setX(this.nube1.getY() - 5);
-        this.nube6.setX(this.nube1.getY() - 5);
-        this.nube7.setX(this.nube1.getY() - 5);
-        this.nube8.setX(this.nube1.getY() - 5);
+        this.nube1 = new Nube(430, 10, 40, 30);
+        this.nube2 = new Nube(70, 10, 40, 30);
+        this.nube3 = new Nube(130, 10, 40, 30);
+        this.nube4 = new Nube(190, 10, 40, 30);
+        this.nube5 = new Nube(250, 10, 40, 30);
+        this.nube6 = new Nube(310, 10, 40, 30);
+        this.nube7 = new Nube(370, 10, 40, 30);
+        this.nube8 = new Nube(430, 10, 40, 30);
+        this.bandera = true;
+        this.h1 = new Thread(this.nube1);
+        this.h1.start();
+        this.h2 = new Thread(this.nube2);
+        this.h2.start();
+        this.h3 = new Thread(this.nube3);
+        this.h3.start();        
+        this.h4 = new Thread(this.nube4);
+        this.h4.start();
+        this.h5 = new Thread(this.nube5);
+        this.h5.start();
+        this.h6 = new Thread(this.nube6);
+        this.h6.start();
+        this.h7 = new Thread(this.nube7);
+        this.h7.start();
+        this.h8 = new Thread(this.nube8);
+        this.h8.start();
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

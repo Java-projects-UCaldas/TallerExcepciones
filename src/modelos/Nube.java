@@ -71,11 +71,14 @@ public class Nube implements Runnable{
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(1000);
-            this.setX(this.getY() + 5);
+        while(true)
+        {
+            try {
+            Thread.sleep(100);
+            this.setX(this.getX() - 5);
         } catch (Exception ex) {
             System.out.println("Error" + ex);
+        }
         }
     }
     
