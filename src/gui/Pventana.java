@@ -19,6 +19,7 @@ public class Pventana extends javax.swing.JPanel {
     Via nuevaVia;
     Nube nube1, nube2, nube3, nube4, nube5, nube6, nube7, nube8;
     Vehiculo vehiculo = new Vehiculo("Bonitas", 3000);
+    Thread h1;
     /**
      * Creates new form Pventana
      */
@@ -33,6 +34,8 @@ public class Pventana extends javax.swing.JPanel {
         this.nube6 = new Nube(310, 10, 40, 30);
         this.nube7 = new Nube(370, 10, 40, 30);
         this.nube8 = new Nube(430, 10, 40, 30);
+        this.h1 = new Thread(this.nube8);
+        this.h1.start();
     }
 
     /**

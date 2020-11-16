@@ -5,13 +5,15 @@
  */
 package modelos;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author Lucas
  */
-public class Nube {
+public class Nube implements Runnable{
     
     private int x;
     private int y;
@@ -65,6 +67,16 @@ public class Nube {
 
     public void setAlto(int alto) {
         this.alto = alto;
+    }
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(1000);
+            this.setX(this.getY() + 5);
+        } catch (Exception ex) {
+            System.out.println("Error" + ex);
+        }
     }
     
     

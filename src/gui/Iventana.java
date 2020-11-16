@@ -207,15 +207,11 @@ public class Iventana extends javax.swing.JFrame {
             this.jLabel4.setText(nuevoVehiculo.getEstado());
             Thread h1 = new Thread(this.nuevoVehiculo);
             h1.start();
-            for(int i=0; i < 10; i++){
-                Thread.sleep(1000);
-                this.pventana1.moverNube();
-            }
+            Thread h2 = new Thread(this.pventana1.nube8);
+            h2.start();
         } catch (VehiculoException ex) {
             this.jLabel4.setText(nuevoVehiculo.getEstado());
             this.jLabel6.setText(ex.getMessage());
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Iventana.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
