@@ -9,6 +9,7 @@ import control.VehiculoException;
 import javax.swing.JFileChooser;
 import java.io.File;     
 import java.io.IOException;
+import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelos.Lector;
@@ -206,9 +207,15 @@ public class Iventana extends javax.swing.JFrame {
             this.jLabel4.setText(nuevoVehiculo.getEstado());
             Thread h1 = new Thread(this.nuevoVehiculo);
             h1.start();
+            for(int i=0; i < 10; i++){
+                Thread.sleep(1000);
+                this.pventana1.moverNube();
+            }
         } catch (VehiculoException ex) {
             this.jLabel4.setText(nuevoVehiculo.getEstado());
             this.jLabel6.setText(ex.getMessage());
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Iventana.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
