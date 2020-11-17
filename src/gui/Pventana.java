@@ -13,6 +13,7 @@ import modelos.Objeto;
 import modelos.Vehiculo;
 import modelos.Via;
 import modelos.Carro;
+import modelos.Hilo;
 
 /**
  *
@@ -24,6 +25,7 @@ public class Pventana extends javax.swing.JPanel {
     Objeto nube1, nube2, nube3, nube4, nube5, nube6, explosion;
     Carro vehiculo;
     Thread h1, h2, h3, h4, h5, h6, h7, h8;
+    Hilo hilo1, hilo2;
     boolean bandera, bandera1 = false;
     ImageIcon imagenNuben = new ImageIcon(getClass().getResource("../img/nube.png"));
     ImageIcon imagenCarroFrente = new ImageIcon(getClass().getResource("../img/carro-frente.png"));
@@ -115,21 +117,31 @@ public class Pventana extends javax.swing.JPanel {
         
         this.via1.setVelocidad(velocidad);
         this.via2.setVelocidad(velocidad);
-        this.h1 = new Thread(this.via1);
-        this.h1.start();
-        this.h2 = new Thread(this.via2);
-        this.h2.start();
+        //this.h1 = new Thread(this.via1);
+        this.hilo1 = new Hilo("Hilo1");
+        this.hilo1.inicia(this.via1);
+        this.hilo2 = new Hilo("Hilo2");
+        this.hilo2.inicia(this.via2);
+        //this.h1.start();
+        //this.h2 = new Thread(this.via2);
+        //this.h2.start();
     }
     
     public void frenar(int velocidad){
-        this.h1.stop();
-        this.h2.stop();
+       // this.h1.stop();
+        //this.h2.stop();
+        this.hilo1.parar();
+        this.hilo2.parar();
+        Hilo nuevoHilo1 = new Hilo("nuevoHilo1");
+        Hilo nuevoHilo2 = new Hilo("nuevoHilo2");
         this.via1.setVelocidad(velocidad);
         this.via1.setVelocidad(velocidad);
-        this.h1 = new Thread(this.via1);
-        this.h1.start();
-        this.h2 = new Thread(this.via2);
-        this.h2.start();
+        //this.h1 = new Thread(this.via1);
+        //this.h1.start();
+        nuevoHilo1.inicia(this.via1);
+        nuevoHilo2.inicia(this.via1);
+       // this.h2 = new Thread(this.via2);
+        //this.h2.start();
     
     }
     
