@@ -153,6 +153,11 @@ public class Pventana extends javax.swing.JPanel {
     public void eliminarExplosion(){
         this.explosion = null;
     }
+
+    public void apagarCarro(){
+        this.via1.setBandera(false);
+        this.via2.setBandera(false);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

@@ -238,10 +238,6 @@ public class Iventana extends javax.swing.JFrame {
                 Logger.getLogger(Iventana.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
-       // Vehiculo carro = new Vehiculo("bonitas", 3000);
-        //Thread h1 = new Thread(carro);
-        //h1.start();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -259,6 +255,7 @@ public class Iventana extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.pventana1.eliminarExplosion();
+        this.pventana1.apagarCarro();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
