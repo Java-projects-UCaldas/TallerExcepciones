@@ -21,12 +21,13 @@ import modelos.Carro;
 public class Pventana extends javax.swing.JPanel {
 
     Via via1, via2, via3;
-    Objeto nube1, nube2, nube3, nube4, nube5, nube6;
+    Objeto nube1, nube2, nube3, nube4, nube5, nube6, explosion;
     Carro vehiculo;
     Thread h1, h2, h3, h4, h5, h6, h7, h8;
     boolean bandera, bandera1 = false;
     ImageIcon imagenNuben = new ImageIcon(getClass().getResource("../img/nube.png"));
     ImageIcon imagenCarroFrente = new ImageIcon(getClass().getResource("../img/carro-frente.png"));
+    ImageIcon imagenExplosion = new ImageIcon(getClass().getResource("../img/explosion.png"));
     /**
      * Creates new form Pventana
      */
@@ -103,6 +104,10 @@ public class Pventana extends javax.swing.JPanel {
                 g.drawImage(this.vehiculo.getImagen().getImage(), this.vehiculo.getX(), 
                  this.vehiculo.getY(), this.vehiculo.getAncho(), this.vehiculo.getAlto(), this);
             }
+            if(explosion != null){
+                g.drawImage(this.explosion.getImagen().getImage(), this.explosion.getX(), 
+                 this.explosion.getY(), this.explosion.getAncho(), this.explosion.getAlto(), this);
+            }
         repaint();
     }
     
@@ -136,6 +141,14 @@ public class Pventana extends javax.swing.JPanel {
         this.vehiculo.setBandera1(true);
         this.h4 = new Thread(this.vehiculo);
         this.h4.start();
+    }
+    
+    public void explotar(){
+        this.explosion = new Objeto(60, 50, 100, 80, imagenExplosion);
+    }
+    
+    public void eliminarExplosion(){
+        this.explosion = null;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

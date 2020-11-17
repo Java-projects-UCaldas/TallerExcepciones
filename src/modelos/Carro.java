@@ -89,7 +89,6 @@ public class Carro implements Runnable{
         int cont = 0;
         while(this.bandera){
             try {
-                
                     if(bandera1 && cont < 5){
                         Thread.sleep(100);
                         this.setImagen(imagenCarroDerecha);
