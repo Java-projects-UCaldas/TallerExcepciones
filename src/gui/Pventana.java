@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import modelos.Objeto;
 import modelos.Vehiculo;
 import modelos.Via;
+import modelos.Carro;
 
 /**
  *
@@ -20,13 +21,12 @@ import modelos.Via;
 public class Pventana extends javax.swing.JPanel {
 
     Via via1, via2, via3;
-    Objeto nube1, nube2, nube3, nube4, nube5, nube6, vehiculo;
+    Objeto nube1, nube2, nube3, nube4, nube5, nube6;
+    Carro vehiculo;
     Thread h1, h2, h3, h4, h5, h6, h7, h8;
     boolean bandera, bandera1 = false;
     ImageIcon imagenNuben = new ImageIcon(getClass().getResource("../img/nube.png"));
     ImageIcon imagenCarroFrente = new ImageIcon(getClass().getResource("../img/carro-frente.png"));
-    ImageIcon imagenCarroDerecha = new ImageIcon(getClass().getResource("../img/carro-derecha.png"));
-    ImageIcon imagenCarroIzquierda = new ImageIcon(getClass().getResource("../img/carro-izquierda.png"));
     /**
      * Creates new form Pventana
      */
@@ -129,11 +129,13 @@ public class Pventana extends javax.swing.JPanel {
     }
     
     public void crearVehiculo(){
-        this.vehiculo = new Objeto(60, 50, 100, 80, imagenCarroFrente);
+        this.vehiculo = new Carro(60, 50, 100, 80, imagenCarroFrente);
     }
     
     public void patinar(){
-        this.bandera1 = true;
+        this.vehiculo.setBandera1(true);
+        this.h3 = new Thread(this.vehiculo);
+        this.h3.start();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
