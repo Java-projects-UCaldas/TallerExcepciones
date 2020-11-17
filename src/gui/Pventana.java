@@ -13,7 +13,6 @@ import modelos.Objeto;
 import modelos.Vehiculo;
 import modelos.Via;
 import modelos.Carro;
-import modelos.Hilo;
 
 /**
  *
@@ -25,7 +24,6 @@ public class Pventana extends javax.swing.JPanel {
     Objeto nube1, nube2, nube3, nube4, nube5, nube6, explosion;
     Carro vehiculo;
     Thread h1, h2, h3, h4, h5, h6, h7, h8;
-    Hilo hilo1, hilo2;
     boolean bandera, bandera1 = false;
     ImageIcon imagenNuben = new ImageIcon(getClass().getResource("../img/nube.png"));
     ImageIcon imagenCarroFrente = new ImageIcon(getClass().getResource("../img/carro-frente.png"));
@@ -115,13 +113,13 @@ public class Pventana extends javax.swing.JPanel {
     
     public void moverVia(int velocidad){
         
+        this.via1.setBandera(false);
+        this.via2.setBandera(false);
         this.via1.setVelocidad(velocidad);
         this.via2.setVelocidad(velocidad);
+        this.via1.setBandera(true);
+        this.via2.setBandera(true);
         this.h1 = new Thread(this.via1);
-        /*this.hilo1 = new Hilo("Hilo1");
-        this.hilo1.inicia(this.via1);
-        this.hilo2 = new Hilo("Hilo2");
-        this.hilo2.inicia(this.via2);*/
         this.h1.start();
         this.h2 = new Thread(this.via2);
         this.h2.start();

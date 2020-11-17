@@ -279,7 +279,6 @@ public class Iventana extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        this.pventana1.hilo1.parar();
         this.pventana1.patinar();
     }//GEN-LAST:event_jButton6ActionPerformed
 
