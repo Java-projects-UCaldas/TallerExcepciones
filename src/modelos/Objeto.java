@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
  *
  * @author Lucas
  */
-public class Nube implements Runnable{
+public class Objeto{
     
     private int x;
     private int y;
@@ -21,12 +21,12 @@ public class Nube implements Runnable{
     private int alto;
     private ImageIcon imagen;
 
-    public Nube(int x, int y, int ancho, int alto) {
+    public Objeto(int x, int y, int ancho, int alto, ImageIcon imagen) {
         this.x = x;
         this.y = y;
         this.ancho = ancho;
         this.alto = alto;
-        this.imagen = new ImageIcon(getClass().getResource("../img/nube.png"));
+        this.imagen = imagen;
     }
 
     public ImageIcon getImagen() {
@@ -69,18 +69,6 @@ public class Nube implements Runnable{
         this.alto = alto;
     }
 
-    @Override
-    public void run() {
-        while(true)
-        {
-            try {
-            Thread.sleep(100);
-            this.setX(this.getX() - 5);
-        } catch (Exception ex) {
-            System.out.println("Error" + ex);
-        }
-        }
-    }
     
     
 }

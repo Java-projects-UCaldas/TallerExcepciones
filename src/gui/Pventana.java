@@ -6,7 +6,10 @@
 package gui;
 
 import java.awt.Graphics;
-import modelos.Nube;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import modelos.Objeto;
 import modelos.Vehiculo;
 import modelos.Via;
 
@@ -16,16 +19,29 @@ import modelos.Via;
  */
 public class Pventana extends javax.swing.JPanel {
 
-    Via nuevaVia;
-    Nube nube1, nube2, nube3, nube4, nube5, nube6, nube7, nube8;
+    Via via1, via2, via3;
+    Objeto nube1, nube2, nube3, nube4, nube5, nube6, vehiculo;
     Thread h1, h2, h3, h4, h5, h6, h7, h8;
-    boolean bandera = false;
+    boolean bandera, bandera1 = false;
+    ImageIcon imagenNuben = new ImageIcon(getClass().getResource("../img/nube.png"));
+    ImageIcon imagenCarroFrente = new ImageIcon(getClass().getResource("../img/carro-frente.png"));
+    ImageIcon imagenCarroDerecha = new ImageIcon(getClass().getResource("../img/carro-derecha.png"));
+    ImageIcon imagenCarroIzquierda = new ImageIcon(getClass().getResource("../img/carro-izquierda.png"));
     /**
      * Creates new form Pventana
      */
     public Pventana() {
         initComponents();
-        this.nuevaVia = new Via(0,0,500,160);       
+        this.via1 = new Via(0,0,640,160);
+        this.via2 = new Via(570,0,640,160);
+        this.via3 = new Via(0,0,640,160);
+        this.nube1 = new Objeto(10, 10, 40, 30, imagenNuben);
+        this.nube2 = new Objeto(70, 10, 40, 30, imagenNuben);
+        this.nube3 = new Objeto(130, 10, 40, 30, imagenNuben);
+        this.nube4 = new Objeto(310, 10, 40, 30, imagenNuben);
+        this.nube5 = new Objeto(370, 10, 40, 30, imagenNuben);
+        this.nube6 = new Objeto(430, 10, 40, 30, imagenNuben);
+        this.h3 = new Thread(this.via3);
     }
 
     /**
@@ -54,11 +70,22 @@ public class Pventana extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); //To change body of generated methods, choose Tools | Templates.
-
-       g.drawImage(this.nuevaVia.getImagen().getImage(), this.nuevaVia.getX(), 
-                this.nuevaVia.getY(), this.nuevaVia.getAncho(), this.nuevaVia.getAlto(), this);
-      
-       if(bandera){
+            
+            g.drawImage(this.via3.getImagen().getImage(), this.via3.getX(), 
+                this.via3.getY(), this.via3.getAncho(), this.via3.getAlto(), this);
+            g.drawImage(this.via1.getImagen().getImage(), this.via1.getX(), 
+                this.via1.getY(), this.via1.getAncho(), this.via1.getAlto(), this);
+            g.drawImage(this.via2.getImagen().getImage(), this.via2.getX(), 
+                this.via2.getY(), this.via2.getAncho(), this.via2.getAlto(), this);
+            
+            if(this.via2.getX() == -150){
+                this.via1.setX(400);
+                this.bandera = true;
+            }else if(this.via1.getX() < -140 && bandera){
+                this.via2.setX(400);
+                this.bandera = false;
+            }
+            
             g.drawImage(this.nube1.getImagen().getImage(), this.nube1.getX(), 
                  this.nube1.getY(), this.nube1.getAncho(), this.nube1.getAlto(), this);
             g.drawImage(this.nube2.getImagen().getImage(), this.nube2.getX(), 
@@ -71,44 +98,42 @@ public class Pventana extends javax.swing.JPanel {
                     this.nube5.getY(), this.nube5.getAncho(), this.nube5.getAlto(), this);
             g.drawImage(this.nube6.getImagen().getImage(), this.nube6.getX(), 
                     this.nube6.getY(), this.nube6.getAncho(), this.nube6.getAlto(), this);
-            g.drawImage(this.nube7.getImagen().getImage(), this.nube7.getX(), 
-                    this.nube7.getY(), this.nube7.getAncho(), this.nube7.getAlto(), this);
-            g.drawImage(this.nube8.getImagen().getImage(), this.nube8.getX(), 
-                    this.nube8.getY(), this.nube8.getAncho(), this.nube8.getAlto(), this);
-       }
-        
-        
-        
+            
+            if(vehiculo != null){
+                g.drawImage(this.vehiculo.getImagen().getImage(), this.vehiculo.getX(), 
+                 this.vehiculo.getY(), this.vehiculo.getAncho(), this.vehiculo.getAlto(), this);
+            }
         repaint();
     }
     
-    public void moverNube(){
-        this.nube1 = new Nube(430, 10, 40, 30);
-        this.nube2 = new Nube(70, 10, 40, 30);
-        this.nube3 = new Nube(130, 10, 40, 30);
-        this.nube4 = new Nube(190, 10, 40, 30);
-        this.nube5 = new Nube(250, 10, 40, 30);
-        this.nube6 = new Nube(310, 10, 40, 30);
-        this.nube7 = new Nube(370, 10, 40, 30);
-        this.nube8 = new Nube(430, 10, 40, 30);
-        this.bandera = true;
-        this.h1 = new Thread(this.nube1);
-        this.h1.start();
-        this.h2 = new Thread(this.nube2);
-        this.h2.start();
-        this.h3 = new Thread(this.nube3);
-        this.h3.start();        
-        this.h4 = new Thread(this.nube4);
-        this.h4.start();
-        this.h5 = new Thread(this.nube5);
-        this.h5.start();
-        this.h6 = new Thread(this.nube6);
-        this.h6.start();
-        this.h7 = new Thread(this.nube7);
-        this.h7.start();
-        this.h8 = new Thread(this.nube8);
-        this.h8.start();
+    public void moverVia(int velocidad){
         
+        this.via1.setVelocidad(velocidad);
+        this.via2.setVelocidad(velocidad);
+        this.h1 = new Thread(this.via1);
+        this.h1.start();
+        this.h2 = new Thread(this.via2);
+        this.h2.start();
+    }
+    
+    public void frenar(int velocidad){
+        this.h1.stop();
+        this.h2.stop();
+        this.via1.setVelocidad(velocidad);
+        this.via1.setVelocidad(velocidad);
+        this.h1 = new Thread(this.via1);
+        this.h1.start();
+        this.h2 = new Thread(this.via2);
+        this.h2.start();
+    
+    }
+    
+    public void crearVehiculo(){
+        this.vehiculo = new Objeto(60, 50, 100, 80, imagenCarroFrente);
+    }
+    
+    public void patinar(){
+        this.bandera1 = true;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
