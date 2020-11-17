@@ -13,6 +13,7 @@ import modelos.Objeto;
 import modelos.Vehiculo;
 import modelos.Via;
 import modelos.Carro;
+import modelos.Nube;
 
 /**
  * Clase Panel en la cual se dibujan todos los objetos
@@ -22,9 +23,10 @@ import modelos.Carro;
 public class Pventana extends javax.swing.JPanel {
 
     Via via1, via2, via3;
-    Objeto nube1, nube2, nube3, nube4, nube5, nube6, explosion;
+    Nube nube1, nube2, nube3, nube4, nube5, nube6;
+    Objeto explosion;
     Carro vehiculo;
-    Thread h1, h2, h3, h4, h5, h6, h7, h8;
+    Thread h1, h2, h3, h4, h5, h6, h7, h8, h9;
     boolean bandera, bandera1 = false;
     ImageIcon imagenNuben = new ImageIcon(getClass().getResource("../img/nube.png"));
     ImageIcon imagenCarroFrente = new ImageIcon(getClass().getResource("../img/carro-frente.png"));
@@ -37,12 +39,13 @@ public class Pventana extends javax.swing.JPanel {
         this.via1 = new Via(0,0,640,160);
         this.via2 = new Via(570,0,640,160);
         this.via3 = new Via(0,0,640,160);
-        this.nube1 = new Objeto(10, 10, 40, 30, imagenNuben);
-        this.nube2 = new Objeto(70, 10, 40, 30, imagenNuben);
-        this.nube3 = new Objeto(130, 10, 40, 30, imagenNuben);
-        this.nube4 = new Objeto(310, 10, 40, 30, imagenNuben);
-        this.nube5 = new Objeto(370, 10, 40, 30, imagenNuben);
-        this.nube6 = new Objeto(430, 10, 40, 30, imagenNuben);
+        this.nube1 = new Nube(10, 10, 40, 30, imagenNuben);
+        this.nube2 = new Nube(70, 10, 40, 30, imagenNuben);
+        this.nube3 = new Nube(130, 10, 40, 30, imagenNuben);
+        this.nube4 = new Nube(310, 10, 40, 30, imagenNuben);
+        this.nube5 = new Nube(370, 10, 40, 30, imagenNuben);
+        this.nube6 = new Nube(430, 10, 40, 30, imagenNuben);
+        this.explosion = null;
         this.h3 = new Thread(this.via3);
     }
 
@@ -98,8 +101,6 @@ public class Pventana extends javax.swing.JPanel {
                     this.nube4.getY(), this.nube4.getAncho(), this.nube4.getAlto(), this);
             g.drawImage(this.nube5.getImagen().getImage(), this.nube5.getX(), 
                     this.nube5.getY(), this.nube5.getAncho(), this.nube5.getAlto(), this);
-            g.drawImage(this.nube6.getImagen().getImage(), this.nube6.getX(), 
-                    this.nube6.getY(), this.nube6.getAncho(), this.nube6.getAlto(), this);
             
             if(vehiculo != null){
                 g.drawImage(this.vehiculo.getImagen().getImage(), this.vehiculo.getX(), 
@@ -124,6 +125,16 @@ public class Pventana extends javax.swing.JPanel {
         this.h1.start();
         this.h2 = new Thread(this.via2);
         this.h2.start();
+        this.h5 = new Thread(this.nube1);
+        this.h5.start();
+        this.h6 = new Thread(this.nube2);
+        this.h6.start();
+        this.h7 = new Thread(this.nube3);
+        this.h7.start();
+        this.h8 = new Thread(this.nube4);
+        this.h8.start();
+        this.h9 = new Thread(this.nube5);
+        this.h9.start();
     }
     
     public void frenar(int velocidad){
@@ -134,7 +145,11 @@ public class Pventana extends javax.swing.JPanel {
         this.via2.setVelocidad(velocidad);
         this.via1.setBandera(true);
         this.via2.setBandera(true);
-    
+        this.nube1.setBandera(false);
+        this.nube2.setBandera(false);
+        this.nube3.setBandera(false);
+        this.nube4.setBandera(false);
+        this.nube5.setBandera(false);
     }
     
     public void crearVehiculo(){
