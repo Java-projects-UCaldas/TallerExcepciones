@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelos;
 
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Lucas
+ * Clase para pintar la via en el Panel
+ * @author 
+ * @version 1.0
  */
 public class Via implements Runnable{
     
@@ -30,90 +26,47 @@ public class Via implements Runnable{
         
     }
     
-    
-    /**
-     * @return the x
-     */
     public int getX() {
         return x;
     }
 
-    /**
-     * @param x the x to set
-     */
     public void setX(int x) {
         this.x = x;
     }
 
-    /**
-     * @return the y
-     */
     public int getY() {
         return y;
     }
 
-    /**
-     * @param y the y to set
-     */
     public void setY(int y) {
         this.y = y;
     }
 
-    /**
-     * @return the ancho
-     */
     public int getAncho() {
         return ancho;
     }
 
-    /**
-     * @param ancho the ancho to set
-     */
     public void setAncho(int ancho) {
         this.ancho = ancho;
     }
 
-    /**
-     * @return the alto
-     */
     public int getAlto() {
         return alto;
     }
 
-    /**
-     * @param alto the alto to set
-     */
     public void setAlto(int alto) {
         this.alto = alto;
     }
 
-    /**
-     * @return the imagen
-     */
     public ImageIcon getImagen() {
         return imagen;
     }
 
-    /**
-     * @param imagen the imagen to set
-     */
     public void setImagen(ImageIcon imagen) {
         this.imagen = imagen;
     }
 
-    @Override
-    public void run() {
-        while(this.bandera){
-            try {
-                    Thread.sleep(this.velocidad);
-                    this.setX(this.getX() - 5);
-            } catch (Exception ex) {
-                    System.out.println("Error" + ex);
-            }
-        }
-    }
-
-    public boolean isBandera() {
+    public boolean getBandera() {
         return bandera;
     }
 
@@ -128,5 +81,16 @@ public class Via implements Runnable{
     public void setVelocidad(int velocidad) {
         this.velocidad = velocidad;
     }
-    
+
+    @Override
+    public void run() {
+        while(this.bandera){
+            try {
+                    Thread.sleep(this.velocidad);
+                    this.setX(this.getX() - 5);
+            } catch (Exception ex) {
+                    System.out.println("Error" + ex);
+            }
+        }
+    }  
 }

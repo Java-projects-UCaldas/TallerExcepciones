@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 
 /**
  * @author
- * @version 1.0
+ * @version 1.0 
  */
 public class Vehiculo implements Runnable {
     
@@ -61,7 +61,10 @@ public class Vehiculo implements Runnable {
     public void setJLabelEstado(JLabel estado){
         this.jLabelEstado = estado;
     }
-    
+     /**
+      * Método para encender el vehículo
+      * @throws VehiculoException
+      */
     public void encender() throws VehiculoException {
         if (this.encendido == 0){
             this.encendido = 1;
@@ -72,6 +75,10 @@ public class Vehiculo implements Runnable {
         }
     }
 
+    /**
+     * Método para apagar el vehículo
+     * @throws VehiculoException
+     */
     public void apagar() throws VehiculoException {
         if(this.encendido == 1){
             this.encendido = 0;
@@ -85,6 +92,12 @@ public class Vehiculo implements Runnable {
         }
     }
 
+    /**
+     * Método que aumenta la velocidad del vehículo
+     * @param aceleracion dato tipo entero con el que se aumentará la
+     *                      velocidad del vehículo
+     * @throws VehiculoException
+     */
     public void acelerar(int aceleracion) throws VehiculoException{
         if(aceleracion > this.velocidadPermitidaMotor){
             this.accidentado = true;
@@ -103,6 +116,12 @@ public class Vehiculo implements Runnable {
         }
     }
 
+    /**
+     * Método que disminuye la velocidad del vehículo
+     * @param intensidad dato tipo entero con el que se disminuye la
+     *                      velocidad del vehículo
+     * @throws VehiculoException
+     */
     public void detener(int intensidad) throws VehiculoException{
             if(this.velocidadActual == 0){
                 throw new VehiculoException("El carro ya se encuentra detenido");
@@ -117,6 +136,12 @@ public class Vehiculo implements Runnable {
             }
     }
 
+    /**
+     * Método mediante el cual se establece la velocidad según
+     * el nombre de las llantas 
+     * @param llantas
+     * @return velocidadAsignar la velocidad del vehículo según las llantas
+     */
     public int asignarVelocidadLlantas(String llantas){
         int velocidadAsignar = 0;
 
@@ -131,6 +156,12 @@ public class Vehiculo implements Runnable {
         return velocidadAsignar;
     }
 
+    /**
+     * Método mediante el cual se establece la velocidad según
+     * el motor
+     * @param llantas
+     * @return velocidadAsignar la velocidad del vehículo según el motor
+     */
     public int asignarVelocidadMotor(int motor){
         int velocidadAsignar = 0;
 

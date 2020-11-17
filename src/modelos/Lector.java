@@ -10,9 +10,9 @@ import java.util.List;
 import javax.swing.JLabel;
 
 /**
- * Clase que lee los archivos de una carpeta y cuenta las veces que se
- * encuentra una palabra en los mismos
- * @author Lucas
+ * Clase que lee el archivo de texto con la información
+ * para la creación del Vehículo
+ * @author 
  * @version 1.0
  */
 public class Lector {

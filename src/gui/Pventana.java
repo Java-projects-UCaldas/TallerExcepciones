@@ -15,8 +15,9 @@ import modelos.Via;
 import modelos.Carro;
 
 /**
- *
- * @author Lucas
+ * Clase Panel en la cual se dibujan todos los objetos
+ * @author 
+ * @version 1.0
  */
 public class Pventana extends javax.swing.JPanel {
 

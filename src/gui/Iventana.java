@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import control.VehiculoException;
@@ -18,9 +13,11 @@ import modelos.Lector;
 import modelos.Vehiculo;
 
 /**
- *
- * @author Lucas
+ * Clase Frame contenedora de Panel y botones
+ * @author 
+ * @version 1.0
  */
+
 public class Iventana extends javax.swing.JFrame {
 
     /**
@@ -222,6 +219,11 @@ public class Iventana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón Para la carga del archivo de texto y la creación
+     * del vehículo
+     * @param evt evento del botón
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + "/Desktop"));
@@ -240,6 +242,10 @@ public class Iventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * Botón con el cual se enciende el vehículo
+     * @param evt evento del botón
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             this.nuevoVehiculo.encender();
@@ -253,28 +259,52 @@ public class Iventana extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * Botón 
+     * @param evt evento del botón
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.pventana1.eliminarExplosion();
         this.pventana1.apagarCarro();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    /**
+     * Botón 
+     * @param evt evento del botón
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         this.pventana1.moverVia(Integer.parseInt(jTextField1.getText()));
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    /**
+     * Botón 
+     * @param evt evento del botón
+     */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    /**
+     * Botón 
+     * @param evt evento del botón
+     */
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    /**
+     * Botón 
+     * @param evt evento del botón
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         this.pventana1.frenar(Integer.parseInt(jTextField2.getText()));
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    /**
+     * Botón 
+     * @param evt evento del botón
+     */
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         this.pventana1.patinar();
     }//GEN-LAST:event_jButton6ActionPerformed

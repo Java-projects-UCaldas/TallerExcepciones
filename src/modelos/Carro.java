@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelos;
 
 import java.util.logging.Level;
@@ -10,8 +5,9 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Lucas
+ * Clase para con la cual se pintará el Carro en el Frame
+ * @author 
+ * @version 1.0
  */
 public class Carro implements Runnable{
     
