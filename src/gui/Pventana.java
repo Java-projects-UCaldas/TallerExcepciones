@@ -134,8 +134,8 @@ public class Pventana extends javax.swing.JPanel {
     
     public void patinar(){
         this.vehiculo.setBandera1(true);
-        this.h3 = new Thread(this.vehiculo);
-        this.h3.start();
+        this.h4 = new Thread(this.vehiculo);
+        this.h4.start();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables

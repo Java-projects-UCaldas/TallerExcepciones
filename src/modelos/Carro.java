@@ -20,7 +20,8 @@ public class Carro implements Runnable{
     private int ancho;
     private int alto;
     private ImageIcon imagen;
-    private boolean bandera, bandera1;
+    private boolean bandera;
+    private boolean bandera1 = false;
 
     ImageIcon imagenCarroFrente = new ImageIcon(getClass().getResource("../img/carro-frente.png"));
     ImageIcon imagenCarroDerecha = new ImageIcon(getClass().getResource("../img/carro-derecha.png"));
@@ -32,6 +33,7 @@ public class Carro implements Runnable{
         this.ancho = ancho;
         this.alto = alto;
         this.imagen = imagen;
+        this.bandera = true;
     }
 
     public ImageIcon getImagen() {
@@ -77,18 +79,27 @@ public class Carro implements Runnable{
     public void setBandera1(boolean nBandera) {
         this.bandera1 = nBandera;
     }
+    
+    public boolean getBandera1(){
+        return this.bandera1;
+    }
 
     @Override
     public void run() {
+        int cont = 0;
         while(this.bandera){
             try {
-                    if(bandera1){
+                
+                    if(bandera1 && cont < 5){
                         Thread.sleep(100);
                         this.setImagen(imagenCarroDerecha);
                         Thread.sleep(100);
                         this.setImagen(imagenCarroFrente);
                         Thread.sleep(100);
                         this.setImagen(imagenCarroIzquierda);
+                        Thread.sleep(100);
+                        this.setImagen(imagenCarroFrente);
+                        cont++;
                     }
                     
             } catch (Exception ex) {
