@@ -117,31 +117,24 @@ public class Pventana extends javax.swing.JPanel {
         
         this.via1.setVelocidad(velocidad);
         this.via2.setVelocidad(velocidad);
-        //this.h1 = new Thread(this.via1);
-        this.hilo1 = new Hilo("Hilo1");
+        this.h1 = new Thread(this.via1);
+        /*this.hilo1 = new Hilo("Hilo1");
         this.hilo1.inicia(this.via1);
         this.hilo2 = new Hilo("Hilo2");
-        this.hilo2.inicia(this.via2);
-        //this.h1.start();
-        //this.h2 = new Thread(this.via2);
-        //this.h2.start();
+        this.hilo2.inicia(this.via2);*/
+        this.h1.start();
+        this.h2 = new Thread(this.via2);
+        this.h2.start();
     }
     
     public void frenar(int velocidad){
-       // this.h1.stop();
-        //this.h2.stop();
-        this.hilo1.parar();
-        this.hilo2.parar();
-        Hilo nuevoHilo1 = new Hilo("nuevoHilo1");
-        Hilo nuevoHilo2 = new Hilo("nuevoHilo2");
+        
+        this.via1.setBandera(false);
+        this.via2.setBandera(false);
         this.via1.setVelocidad(velocidad);
-        this.via1.setVelocidad(velocidad);
-        //this.h1 = new Thread(this.via1);
-        //this.h1.start();
-        nuevoHilo1.inicia(this.via1);
-        nuevoHilo2.inicia(this.via1);
-       // this.h2 = new Thread(this.via2);
-        //this.h2.start();
+        this.via2.setVelocidad(velocidad);
+        this.via1.setBandera(true);
+        this.via2.setBandera(true);
     
     }
     
