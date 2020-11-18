@@ -174,6 +174,21 @@ public class Pventana extends javax.swing.JPanel {
         this.via1.setBandera(false);
         this.via2.setBandera(false);
     }
+    
+    public int calcularVelodidad(int intensidad){
+        int velocidadCalculada = 0;
+        
+        if(intensidad <= 10){
+            velocidadCalculada = 200;
+        }
+        else if(intensidad > 10 && intensidad <= 20){
+            velocidadCalculada = 180;
+        }
+        else if(intensidad > 20 && intensidad <= 30){
+            velocidadCalculada = 160;
+        }
+        return velocidadCalculada;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

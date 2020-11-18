@@ -43,8 +43,20 @@ public class Vehiculo implements Runnable {
         
     }
 
+    public int getEncendido(){
+        return this.encendido;
+    }
     public boolean getPatina(){
         return this.patina;
+    }
+    
+    
+    public int getVelocidadActual() {
+        return velocidadActual;
+    }
+
+    public void setVelocidadActual(int velocidadActual) {
+        this.velocidadActual += velocidadActual;
     }
 
     public boolean getAccidentado(){
@@ -80,14 +92,16 @@ public class Vehiculo implements Runnable {
      * @throws VehiculoException
      */
     public void apagar() throws VehiculoException {
-        if(this.encendido == 1){
+        if(this.encendido == 1 && this.velocidadActual < 60){
             this.encendido = 0;
+            this.estado = "Apagado";
         }
         else if(this.encendido == 0){
             throw new VehiculoException("El vehículo ya se encuentra apagado");
         }
         else if(this.velocidadActual > 60){
             this.accidentado = true;
+            this.estado = "Accidentado";
             throw new VehiculoException("El vehículo se accidentó por apagarse con una velocidad mayor a 60 Km/h");
         }
     }
@@ -101,10 +115,12 @@ public class Vehiculo implements Runnable {
     public void acelerar(int aceleracion) throws VehiculoException{
         if(aceleracion > this.velocidadPermitidaMotor){
             this.accidentado = true;
+            this.estado = "Accidentado";
             throw new VehiculoException("El Vehículo se accidentó por exceso de velocidad permitido para el motor");
         }
         else if((this.velocidadActual + aceleracion) > this.velocidadPermitidaMotor){
             this.accidentado = true;
+            this.estado = "Accidentado";
             throw new VehiculoException("El Vehículo se accidentó por exceso de velocidad permitido para el motor");
         }
         else if((this.velocidadActual + aceleracion) <= this.velocidadPermitidaMotor){
@@ -113,6 +129,9 @@ public class Vehiculo implements Runnable {
         else if((this.velocidadActual + aceleracion) > this.velocidadPermitidaLlantas){
             this.patina = true;
             throw new VehiculoException("El vehículo patinó por exceso de velocidad permitida para las llantas");
+        }
+        else if(this.encendido == 0){
+            throw new VehiculoException("El vehículo no se puede acelerar ya que está apagado");
         }
     }
 
@@ -133,6 +152,17 @@ public class Vehiculo implements Runnable {
             else if(this.velocidadActual < intensidad){
                 this.patina = true;
                 throw new VehiculoException("El vehículo patinó por frenar con una intensidad mayor a la velocidad actual");
+            }
+            else if(this.encendido == 0){
+                this.estado = "Apagado";
+                throw new VehiculoException("El vehículo no se puede frenar ya que está apagado");
+            }
+            else if(this.velocidadActual == 0){
+                this.estado = "Detenido";
+                throw new VehiculoException("El vehículo no se puede frenar ya que está detendido");
+            }
+            else{
+                this.velocidadActual -= intensidad;
             }
     }
 
@@ -187,4 +217,5 @@ public class Vehiculo implements Runnable {
             
         }
     }
+
 }

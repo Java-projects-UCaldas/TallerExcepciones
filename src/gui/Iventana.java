@@ -24,7 +24,9 @@ public class Iventana extends javax.swing.JFrame {
      * Creates new form Iventana
      */
     
-    Vehiculo nuevoVehiculo;
+    Vehiculo nuevoVehiculo = null;
+    int multiplicador = 10;
+    
     public Iventana() {
         initComponents();
     }
@@ -45,7 +47,6 @@ public class Iventana extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         pventana1 = new gui.Pventana();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -53,6 +54,8 @@ public class Iventana extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,13 +100,6 @@ public class Iventana extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Frenar B.");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pventana1Layout = new javax.swing.GroupLayout(pventana1);
         pventana1.setLayout(pventana1Layout);
         pventana1Layout.setHorizontalGroup(
@@ -133,26 +129,38 @@ public class Iventana extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("Velocidad Actual:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
+                .addComponent(pventana1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(86, 86, 86))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel4)
+                                .addGap(218, 218, 218)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel8))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(222, 222, 222)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
@@ -163,24 +171,13 @@ public class Iventana extends javax.swing.JFrame {
                             .addComponent(jTextField1)
                             .addComponent(jButton4))
                         .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField2)
-                                .addGap(83, 83, 83))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton6))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton5)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel1)
-                            .addGap(175, 175, 175))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(pventana1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(86, 86, 86)))))
+                        .addGap(266, 266, 266)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,23 +187,24 @@ public class Iventana extends javax.swing.JFrame {
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(pventana1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(jButton5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -225,20 +223,26 @@ public class Iventana extends javax.swing.JFrame {
      * @param evt evento del botón
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + "/Desktop"));
-        int result = fileChooser.showOpenDialog(this);
-        if (result == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            Lector nuevoLector = new Lector(selectedFile.getAbsolutePath());
-            try  {
-                nuevoVehiculo = nuevoLector.CreaVehículo();
-                nuevoVehiculo.setEstado("Vehículo creado");
-                this.jLabel4.setText(nuevoVehiculo.getEstado());
-                this.pventana1.crearVehiculo();
-            } catch (IOException ex) {
-                Logger.getLogger(Iventana.class.getName()).log(Level.SEVERE, null, ex);
+        
+        if(this.nuevoVehiculo == null){
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setCurrentDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+            int result = fileChooser.showOpenDialog(this);
+            if (result == JFileChooser.APPROVE_OPTION) {
+                File selectedFile = fileChooser.getSelectedFile();
+                Lector nuevoLector = new Lector(selectedFile.getAbsolutePath());
+                try  {
+                    nuevoVehiculo = nuevoLector.CreaVehículo();
+                    nuevoVehiculo.setEstado("Vehículo creado");
+                    this.jLabel4.setText(nuevoVehiculo.getEstado());
+                    this.jLabel8.setText(String.valueOf(nuevoVehiculo.getVelocidadActual()));
+                    this.pventana1.crearVehiculo();
+                } catch (IOException ex) {
+                    Logger.getLogger(Iventana.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+        }else{
+            this.jLabel6.setText("El vehículo ya se encuentra creado");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -250,64 +254,97 @@ public class Iventana extends javax.swing.JFrame {
         try {
             this.nuevoVehiculo.encender();
             this.jLabel4.setText(nuevoVehiculo.getEstado());
-            Thread h1 = new Thread(this.nuevoVehiculo);
-            h1.start();
+            this.jLabel8.setText(String.valueOf(nuevoVehiculo.getVelocidadActual()));
+            //Thread h1 = new Thread(this.nuevoVehiculo);
+           // h1.start();
         } catch (VehiculoException ex) {
             this.jLabel4.setText(nuevoVehiculo.getEstado());
             this.jLabel6.setText(ex.getMessage());
-            this.pventana1.explotar();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
-     * Botón 
+     * Botón para apagar el vehículo
      * @param evt evento del botón
      */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.pventana1.eliminarExplosion();
-        this.pventana1.apagarCarro();
+        try {
+            this.pventana1.apagarCarro();
+            this.nuevoVehiculo.apagar();
+            this.nuevoVehiculo.setEstado("Apagado");
+            this.jLabel4.setText(this.nuevoVehiculo.getEstado());
+        } catch (VehiculoException ex) {
+            if(this.nuevoVehiculo.getAccidentado()){
+                this.pventana1.explotar();
+            }
+            this.nuevoVehiculo.setEstado("Apagado");
+            this.jLabel4.setText(this.nuevoVehiculo.getEstado());
+            this.jLabel6.setText(ex.getMessage());
+        }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
-     * Botón 
+     * Botón para acelerar el vehículo
      * @param evt evento del botón
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-        this.pventana1.moverVia(Integer.parseInt(jTextField1.getText()));
+        try {
+                if(this.nuevoVehiculo.getEncendido() == 0){
+                    this.jLabel4.setText("Apagado");
+                    this.jLabel6.setText("Vehículo apagado no se puede acelerar");
+                }else{
+                    this.pventana1.moverVia(this.pventana1.calcularVelodidad(Integer.parseInt(jTextField1.getText())));
+                    this.nuevoVehiculo.acelerar(Integer.parseInt(jTextField1.getText()));
+                    this.jLabel8.setText(String.valueOf(this.nuevoVehiculo.getVelocidadActual()));
+                }
+            } catch (VehiculoException ex) {
+                if(this.nuevoVehiculo.getAccidentado()){
+                    this.pventana1.explotar();
+                    this.jLabel4.setText("Apagado");
+                    this.pventana1.apagarCarro();
+                }
+                this.jLabel4.setText(this.nuevoVehiculo.getEstado());
+                this.jLabel6.setText(ex.getMessage());
+                this.jLabel8.setText(String.valueOf(this.nuevoVehiculo.getVelocidadActual()));
+            }
+
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    /**
-     * Botón 
-     * @param evt evento del botón
-     */
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    /**
-     * Botón 
-     * @param evt evento del botón
-     */
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
-     * Botón 
+     * Botón para frenar el vehículo
      * @param evt evento del botón
      */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.pventana1.frenar(Integer.parseInt(jTextField2.getText()));
-    }//GEN-LAST:event_jButton5ActionPerformed
+        
+        try {
+            if(this.nuevoVehiculo.getEncendido() == 0){
+                this.jLabel4.setText("Apagado");
+                this.jLabel6.setText("Vehículo apagado no se puede frenar");
+            }else{
+                this.pventana1.frenar(this.pventana1.calcularVelodidad(Integer.parseInt(jTextField2.getText())));
+                this.nuevoVehiculo.detener(Integer.parseInt(jTextField2.getText()));
+                this.jLabel8.setText(String.valueOf(this.nuevoVehiculo.getVelocidadActual()));
+            }
+        } catch (VehiculoException ex) {
+                this.jLabel4.setText(this.nuevoVehiculo.getEstado());
+                this.jLabel8.setText(String.valueOf(this.nuevoVehiculo.getVelocidadActual()));
+                this.pventana1.patinar();
+                this.jLabel6.setText(ex.getMessage());
+        }
 
-    /**
-     * Botón 
-     * @param evt evento del botón
-     */
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        this.pventana1.patinar();
-    }//GEN-LAST:event_jButton6ActionPerformed
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,13 +387,14 @@ public class Iventana extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private gui.Pventana pventana1;
